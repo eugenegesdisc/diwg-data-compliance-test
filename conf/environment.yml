@@ -1,0 +1,11 @@
+name: myenv
+channels:
+  - conda-forge
+dependencies:
+  - python=3.12
+  - gdal
+  - pytest
+  - pytest-html
+  - pytest-json-report
+  - udunits2
+  - dateparser
