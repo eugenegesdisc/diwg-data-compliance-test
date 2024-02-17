@@ -29,7 +29,7 @@ def dataset_collection(request):
             collection_name: "thecollection_list.file",
             error: "Error message if there is error",
             datasets: [{
-                "name":"example.nc",
+                "dataset_name":"example.nc",
                 "error":"message for error if error exists",
                 "variables":[
                         {
@@ -70,7 +70,7 @@ class TestClassDatasetCollectionVarialeUnitsConsistency:
                 collection_name: "thecollection_list.file",
                 error: "Error message if there is error",
                 datasets: [{
-                    "name":"example.nc",
+                    "dataset_name":"example.nc",
                     "error":"message for error if error exists",
                     "variables":[
                             {
@@ -150,13 +150,13 @@ class TestClassDatasetCollectionVarialeUnitsConsistency:
                     test_results.append(_the_o)
             else:
                 _the_o = dict()
-                _the_o["dataset_name"]=dataset["name"]
+                _the_o["dataset_name"]=dataset["dataset_name"]
                 _the_o["error"]=(
                     f"No matching or ambiguous var - '{_r_v_name}'")
                 test_results.append(_the_o)
 
         _the_o = dict()
-        _the_o["dataset_name"]=dataset["name"]
+        _the_o["dataset_name"]=dataset["dataset_name"]
         _the_o["errors"]=test_results
         if len(test_results) == 0:
             return None

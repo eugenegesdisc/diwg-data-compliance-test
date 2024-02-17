@@ -31,7 +31,7 @@ def dataset_collection(request):
             collection_name: "thecollection_list.file",
             error: "Error message if there is error",
             datasets: [{
-                "name":"example.nc",
+                "dataset_name":"example.nc",
                 "error":"message for error if error exists",
                 "variables":[
                         {
@@ -72,7 +72,7 @@ class TestClassDatasetCollectionVariableUnits:
                 collection_name: "thecollection_list.file",
                 error: "Error message if there is error",
                 datasets: [{
-                    "name":"example.nc",
+                    "dataset_name":"example.nc",
                     "error":"message for error if error exists",
                     "variables":[
                             {
@@ -133,7 +133,7 @@ class TestClassDatasetCollectionVariableUnits:
         if "error" in dataset:
             _the_dict = dict()
             _the_dict["error"]=dataset["error"]
-            _the_dict["dataset_name"]=dataset["name"]
+            _the_dict["dataset_name"]=dataset["dataset_name"]
             return _the_dict
         test_results = list()
         for _the_var in dataset['variables']:
@@ -142,7 +142,7 @@ class TestClassDatasetCollectionVariableUnits:
             self._check_variable_units_2(
                 test_results,_the_var)
         _the_o = dict()
-        _the_o["dataset_name"]=dataset["name"]
+        _the_o["dataset_name"]=dataset["dataset_name"]
         _the_o["errors"]=test_results
         if len(test_results) == 0:
             return None

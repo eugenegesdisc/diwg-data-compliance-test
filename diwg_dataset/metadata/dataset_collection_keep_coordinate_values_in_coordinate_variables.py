@@ -24,7 +24,7 @@ class DatasetCollectionKeepCoordValuesInCoordVariables:
             error: "Error message if there is error",
             datasets: [
                 {
-                    "name":"example.nc",
+                    "dataset_name":"example.nc",
                     "error":"message for error if error exists",
                     "groups":[
                         {

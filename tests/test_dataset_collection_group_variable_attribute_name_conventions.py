@@ -27,7 +27,7 @@ def dataset_collection(request):
         Expect the following
         the_ret_dataset = 
             [{
-                "name":"example.nc",
+                "dataset_name":"example.nc",
                 "error":"message for error if error exists",
                 "group_names":["group1", "2group"],
                 "variable_names":["var1", "var-2"],
@@ -57,13 +57,14 @@ class TestClassDatasetCollectionGroupVariableAttributeNameConvention:
     def setup_class(self):
         """
             Setup at the class level.
-        """
         self.ds = [{
-            "name":'test_dataset.nc',
+            "dataset_name":'test_dataset.nc',
             "group_names":["group1", "2group"],
             "variable_names":["var1", "var-2"],
             "attribute_names":["attr1", "attr_2"]
             }]
+        """
+        pass
 
     def test_user_defined_group_variable_attribute_names(
             self, dataset_collection):
@@ -104,7 +105,7 @@ class TestClassDatasetCollectionGroupVariableAttributeNameConvention:
         if "error" in dataset:
             _the_dict = dict()
             _the_dict["error"]=dataset["error"]
-            _the_dict["dataset_name"]=dataset["name"]
+            _the_dict["dataset_name"]=dataset["dataset_name"]
             return _the_dict
         test_results = list()
         cf_regex = re.compile(r'^[A-Za-z][A-Za-z0-9_]*$')
@@ -139,7 +140,7 @@ class TestClassDatasetCollectionGroupVariableAttributeNameConvention:
             _the_o["invalid_values"]=_the_attribute
             test_results.append(_the_o)
         _the_o = dict()
-        _the_o["dataset_name"]=dataset["name"]
+        _the_o["dataset_name"]=dataset["dataset_name"]
         _the_o["errors"]=test_results
         if len(test_results) == 0:
             return None

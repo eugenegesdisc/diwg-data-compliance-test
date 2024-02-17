@@ -94,7 +94,7 @@ class TestClassDatasetCollectionVariableUnits:
                 collection_name: "thecollection_list.file",
                 error: "Error message if there is error",
                 datasets: [{
-                    "name":"example.nc",
+                    "dataset_name":"example.nc",
                     "error":"message for error if error exists",
                     "variables":[
                             {
@@ -162,7 +162,7 @@ class TestClassDatasetCollectionVariableUnits:
         if "error" in dataset:
             _the_dict = dict()
             _the_dict["error"]=dataset["error"]
-            _the_dict["dataset_name"]=dataset["name"]
+            _the_dict["dataset_name"]=dataset["dataset_name"]
             _the_reason = json.dumps(_the_dict)
             pytest.xfail(_the_reason)
         _errors = list()
@@ -171,7 +171,7 @@ class TestClassDatasetCollectionVariableUnits:
             self._check_variable_has_grid_mapping_wkt(
                 _errors,_warnings,_the_var)
         _the_o = dict()
-        _the_o["dataset_name"]=dataset["name"]
+        _the_o["dataset_name"]=dataset["dataset_name"]
         _the_o["errors"]=_errors
         _the_o["warnings"]=_warnings
         return _the_o

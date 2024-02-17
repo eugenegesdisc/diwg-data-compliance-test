@@ -15,7 +15,7 @@ class DatasetGroupVariableAttributeName:
             Retrieve the metadata.
             @return: 
             {
-                "name":"example.nc",
+                "dataset_name":"example.nc",
                 "error":"message for error if error exists",
                 "group_names":["group1", "2group"],
                 "variable_names":["var1", "var-2"],
@@ -24,7 +24,7 @@ class DatasetGroupVariableAttributeName:
         """
         gdal.UseExceptions()
         _the_ret_gva_names = dict()
-        _the_ret_gva_names["name"] = dataset_name
+        _the_ret_gva_names["dataset_name"] = dataset_name
         _the_g_names = set()
         _the_ret_gva_names["group_names"] = _the_g_names
         _the_v_names = set()

@@ -16,7 +16,7 @@ class DatasetVariableUnits:
             Retrieve all the variables and their units.
             @return: 
             {
-                "name":"example.nc",
+                "dataset_name":"example.nc",
                 "error":"message for error if error exists",
                 "variables":[
                         {
@@ -70,7 +70,7 @@ class DatasetVariableUnits:
             Retrieve all the variables.
             @return: 
             {
-                "name":"example.nc",
+                "dataset_name":"example.nc",
                 "error":"message for error if error exists",
                 "variables":[
                     {
@@ -82,10 +82,8 @@ class DatasetVariableUnits:
         """
         gdal.UseExceptions()
         _the_variables = dict()
-        _the_variables["name"] = dataset_name
+        _the_variables["dataset_name"] = dataset_name
         _the_variables["variables"] = set()
-        # {"path":"fullpath-to-subdataset",
-        #  "name":"variable1"}
 
         try:
             _the_info = None

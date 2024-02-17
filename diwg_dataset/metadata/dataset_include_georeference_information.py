@@ -59,7 +59,7 @@ class DatasetIncludeGeoreferenceInformation:
         """
         gdal.UseExceptions()
         _the_variables = dict()
-        _the_variables["name"] = dataset_name
+        _the_variables["dataset_name"] = dataset_name
         _the_variables["variables"] = list()
 
         try:

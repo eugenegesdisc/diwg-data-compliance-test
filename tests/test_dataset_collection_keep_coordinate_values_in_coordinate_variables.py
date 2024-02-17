@@ -32,7 +32,7 @@ def dataset_collection(request):
             error: "Error message if there is error",
             datasets: [
                 {
-                    "name":"example.nc",
+                    "dataset_name":"example.nc",
                     "error":"message for error if error exists",
                     "groups":[
                         {
@@ -120,7 +120,7 @@ class TestClassDatasetCollectionKeepCoordValuesInCoordVariables:
                 "time_variables":['/somegroup/time'],
                 datasets: [
                     {
-                        "name":"example.nc",
+                        "dataset_name":"example.nc",
                         "error":"message for error if error exists",
                         "coords_in_groups":[
                                 {
@@ -219,7 +219,7 @@ class TestClassDatasetCollectionKeepCoordValuesInCoordVariables:
         if "error" in dataset:
             _the_dict = dict()
             _the_dict["error"]=dataset["error"]
-            _the_dict["dataset_name"]=dataset["name"]
+            _the_dict["dataset_name"]=dataset["dataset_name"]
             _the_reason = json.dumps(_the_dict)
             pytest.xfail(_the_reason)
         # test if dataset has time variable
@@ -257,7 +257,7 @@ class TestClassDatasetCollectionKeepCoordValuesInCoordVariables:
                     _the_o["error"]=(f"In type: {_type}")
                     test_results.append(_the_o)
         _the_o = dict()
-        _the_o["dataset_name"]=dataset["name"]
+        _the_o["dataset_name"]=dataset["dataset_name"]
         _the_o["errors"]=test_results
         if len(test_results) == 0:
             return None

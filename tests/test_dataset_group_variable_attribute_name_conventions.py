@@ -59,7 +59,7 @@ class TestClassDatasetGroupVariableAttributeNameConvention:
             Setup at the class level.
         """
         self.ds = {
-            "name":'test_dataset.nc',
+            "dataset_name":'test_dataset.nc',
             "group_names":["group1", "2group"],
             "variable_names":["var1", "var-2"],
             "attribute_names":["attr1", "attr_2"]
@@ -78,7 +78,7 @@ class TestClassDatasetGroupVariableAttributeNameConvention:
         if "error" in dataset:
             _the_dict = dict()
             _the_dict["error"]=dataset["error"]
-            _the_dict["dataset_name"]=dataset["name"]
+            _the_dict["dataset_name"]=dataset["dataset_name"]
             _the_reason = json.dumps(_the_dict)
             pytest.xfail(_the_reason)
         test_results = list()
@@ -114,7 +114,7 @@ class TestClassDatasetGroupVariableAttributeNameConvention:
             _the_o["invalid_values"]=_the_attribute
             test_results.append(_the_o)
         _the_o = dict()
-        _the_o["dataset_name"]=dataset["name"]
+        _the_o["dataset_name"]=dataset["dataset_name"]
         _the_o["errors"]=test_results
         test_except_message = json.dumps(_the_o)
         assert len(test_results) == 0, test_except_message

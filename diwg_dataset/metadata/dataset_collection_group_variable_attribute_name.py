@@ -19,7 +19,7 @@ class DatasetCollectionGroupVariableAttributeName:
             collection_name: "thecollection_list.file",
             error: "Error message if there is error",
             datasets: [{
-                "name":"example.nc",
+                "dataset_name":"example.nc",
                 "error":"message for error if error exists",
                 "group_names":["group1", "2group"],
                 "variable_names":["var1", "var-2"],

@@ -20,7 +20,7 @@ class DatasetIncludeTimeCoordInSwath:
             work with dataset with multi-dimensional arrays, i.e. netcdf, hdf, hdfeos.
             @return: 
             {
-                "name":"example.nc",
+                "dataset_name":"example.nc",
                 "error":"message for error if error exists",
                 "time_variables":['/somegroup/time'],
                 "variables":[
@@ -36,22 +36,11 @@ class DatasetIncludeTimeCoordInSwath:
         """
         gdal.UseExceptions()
         _the_variables = dict()
-        _the_variables["name"] = dataset_name
+        _the_variables["dataset_name"] = dataset_name
         _the_variables["variables"] = list()
-        # {"path":"fullpath-to-subdataset",
-        #  "name":"variable1"}
 
         try:
             _the_md_info = None
-            #_the_file = dataset_name
-            #with gdal.Open(dataset_name, gdal.GA_ReadOnly) as _the_ds:
-            #    if not isinstance(_the_ds, gdal.Dataset):
-            #        _the_variables["error"] = "Failed at opening the dataset."
-            #        return _the_variables
-            #    _the_info = gdal.Info(_the_ds, format="json")
-            #    if 'files' in _the_info:
-            #        if len(_the_info['files'])>0:
-            #            _the_file = _the_info['files'][0]
             (_the_format,
             _the_file,
             _the_groups,

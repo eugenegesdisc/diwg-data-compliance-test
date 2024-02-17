@@ -28,7 +28,7 @@ def dataset(request):
         Expect the following
         the_ret_dataset = 
             {
-            "name":"example.nc",
+            "dataset_name":"example.nc",
             "error":"message for error if error exists",
             "variables":[
                     {
@@ -65,7 +65,7 @@ class TestClassDatasetVariableUnits:
             Setup at the class level.
         self.ds = 
             {
-            "name":"example.nc",
+            "dataset_name":"example.nc",
             "error":"message for error if error exists",
             "variables":[
                     {
@@ -92,7 +92,7 @@ class TestClassDatasetVariableUnits:
         if "error" in dataset:
             _the_dict = dict()
             _the_dict["error"]=dataset["error"]
-            _the_dict["dataset_name"]=dataset["name"]
+            _the_dict["dataset_name"]=dataset["dataset_name"]
             _the_reason = json.dumps(_the_dict)
             pytest.xfail(_the_reason)
         test_results = list()
@@ -102,7 +102,7 @@ class TestClassDatasetVariableUnits:
             self._check_variable_units_2(
                 test_results,_the_var)
         _the_o = dict()
-        _the_o["dataset_name"]=dataset["name"]
+        _the_o["dataset_name"]=dataset["dataset_name"]
         _the_o["errors"]=test_results
         test_except_message = json.dumps(_the_o)
         assert len(test_results) == 0, test_except_message

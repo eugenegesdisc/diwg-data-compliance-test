@@ -61,7 +61,7 @@ class DatasetMetaPacking:
 
                 if the_ds.RasterCount>0:
                     _the_root = dict()
-                    _the_root["name"] = dataset_name
+                    _the_root["dataset_name"] = dataset_name
                     self._gdal_get_subdataset_metadata_packing(
                         _the_root, the_ds)
                     _the_ret['subdatasets'].append(_the_root)

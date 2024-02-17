@@ -67,7 +67,7 @@ class TestClassDatasetIncludeTimeCoordInSwath:
             Setup at the class level.
         self.ds = 
             {
-                "name":"example.nc",
+                "dataset_name":"example.nc",
                 "error":"message for error if error exists",
                 "variables":[
                     {
@@ -95,17 +95,17 @@ class TestClassDatasetIncludeTimeCoordInSwath:
         if "error" in dataset:
             _the_dict = dict()
             _the_dict["error"]=dataset["error"]
-            _the_dict["dataset_name"]=dataset["name"]
+            _the_dict["dataset_name"]=dataset["dataset_name"]
             _the_reason = json.dumps(_the_dict)
             pytest.xfail(_the_reason)
         # test if dataset has time variable
 
         test_results = list()
         if len(dataset['time_variables']) < 1:
-                _the_o = dict()
-                _the_o["dataset_name"]=dataset["name"]
-                _the_o["error"]=("No time variable found")
-                test_results.append(_the_o)
+            _the_o = dict()
+            _the_o["dataset_name"]=dataset["dataset_name"]
+            _the_o["error"]=("No time variable found")
+            test_results.append(_the_o)
         for _the_var in dataset['variables']:
             # skip these without coordinates (possibly not valid data?)
             if len(_the_var['coordinates'])<1:
@@ -116,7 +116,7 @@ class TestClassDatasetIncludeTimeCoordInSwath:
                 _the_o["error"]=("Coordinates does not include time")
                 test_results.append(_the_o)
         _the_o = dict()
-        _the_o["dataset_name"]=dataset["name"]
+        _the_o["dataset_name"]=dataset["dataset_name"]
         _the_o["errors"]=test_results
         test_except_message = json.dumps(_the_o)
         assert len(test_results) == 0, test_except_message

@@ -24,7 +24,7 @@ class DatasetKeepCoordValuesInCoordVariables:
              i.e. netcdf, hdf, hdfeos.
             @return: 
             {
-                "name":"example.nc",
+                "dataset_name":"example.nc",
                 "error":"message for error if error exists",
                 "coords_in_groups":[
                         {
@@ -74,7 +74,7 @@ class DatasetKeepCoordValuesInCoordVariables:
             }
         """
         _gva_coords = dict()
-        _gva_coords["name"] = dataset_name
+        _gva_coords["dataset_name"] = dataset_name
         _gva_coords["coords_in_groups"] = list()
         _gva_coords["coords_not_in_variables"] = list()
         _gva_coords["coords_in_attributes"] = list()
@@ -128,7 +128,7 @@ class DatasetKeepCoordValuesInCoordVariables:
              i.e. netcdf, hdf, hdfeos.
             @return: 
             {
-                "name":"example.nc",
+                "dataset_name":"example.nc",
                 "error":"message for error if error exists",
                 "groups":[
                     {
@@ -186,7 +186,7 @@ class DatasetKeepCoordValuesInCoordVariables:
         """
         gdal.UseExceptions()
         _grp_var_attrs = dict()
-        _grp_var_attrs["name"] = dataset_name
+        _grp_var_attrs["dataset_name"] = dataset_name
         _grp_var_attrs["groups"] = list()
         _grp_var_attrs["variables"] = list()
         _grp_var_attrs["attributes"] = list()

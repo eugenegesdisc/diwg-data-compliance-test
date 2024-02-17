@@ -32,7 +32,7 @@ def dataset_collection(request):
             error: "Error message if there is error",
             datasets: [
                     {
-                        "name":"example.nc",
+                        "dataset_name":"example.nc",
                         "error":"message for error if error exists",
                         "variables":[
                             {
@@ -78,7 +78,7 @@ class TestClassDatasetCollectionVariableUnits:
                 "time_variables":['/somegroup/time'],
                 datasets: [
                         {
-                            "name":"example.nc",
+                            "dataset_name":"example.nc",
                             "error":"message for error if error exists",
                             "variables":[
                                 {
@@ -142,13 +142,13 @@ class TestClassDatasetCollectionVariableUnits:
         if "error" in dataset:
             _the_dict = dict()
             _the_dict["error"]=dataset["error"]
-            _the_dict["dataset_name"]=dataset["name"]
+            _the_dict["dataset_name"]=dataset["dataset_name"]
             _the_reason = json.dumps(_the_dict)
             pytest.xfail(_the_reason)
         test_results = list()
         if len(dataset['time_variables']) < 1:
                 _the_o = dict()
-                _the_o["dataset_name"]=dataset["name"]
+                _the_o["dataset_name"]=dataset["dataset_name"]
                 _the_o["error"]=("No time variable found")
                 test_results.append(_the_o)
         for _the_var in dataset['variables']:
@@ -161,7 +161,7 @@ class TestClassDatasetCollectionVariableUnits:
                 _the_o["error"]=("Coordinates does not include time")
                 test_results.append(_the_o)
         _the_o = dict()
-        _the_o["dataset_name"]=dataset["name"]
+        _the_o["dataset_name"]=dataset["dataset_name"]
         _the_o["errors"]=test_results
         if len(test_results) == 0:
             return None
