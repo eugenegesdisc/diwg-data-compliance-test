@@ -1,4 +1,4 @@
-name: myenv
+name: diwgtest
 channels:
   - conda-forge
 dependencies:
