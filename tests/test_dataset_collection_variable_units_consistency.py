@@ -7,8 +7,8 @@ import re
 import json
 import pytest
 
-from diwg_dataset.metadata.dataset_collection_variable_units import (
-    DatasetCollectionVariableUnits)
+from diwg_dataset.metadata.dataset_collection_variable_physical_units import (
+    DatasetCollectionVariablePhysicalUnits)
 
 def setup_module(module):
     """Setup at the module level"""
@@ -44,7 +44,7 @@ def dataset_collection(request):
     """
     #setup - class
     the_dataset_collection_filename=request.config.getoption("--dataset-name-list")
-    the_dmp = DatasetCollectionVariableUnits()
+    the_dmp = DatasetCollectionVariablePhysicalUnits()
     the_ret_dataset = the_dmp.get_variable_units(the_dataset_collection_filename)
     # return the_database_name
     yield the_ret_dataset
