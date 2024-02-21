@@ -289,10 +289,30 @@ https://gpm1.gesdisc.eosdis.nasa.gov/data/GPM_L3/GPM_3IMERGHH.07/2023/132/3B-HHR
 /data/3B-HHR.MS.MRG.3IMERG*.HDF5
 ```
 
-4. Running the following to produce the report in JSON:
+4. Running the following to produce the report in HTML:
 
 ```
-pytest  --dataset-name-list="/data/test_collection.lst" -v --tb=line --json-report --json-report-file=reports/report.json
+pytest  --dataset-name-list="/data/test_collection.lst" -v --tb=line --html=reports/report.html
 ```
 
 ### Export a test to markdown
+
+The results can be exported as a Markdown file.
+
+Example to produce report in HTML:
+1. Data source: Download the data from the following links to *"/data"* directory. It needs your earthdata authentication.
+```
+https://gpm1.gesdisc.eosdis.nasa.gov/data/GPM_L3/GPM_3IMERGHH.07/2023/132/3B-HHR.MS.MRG.3IMERG.20230512-S000000-E002959.0000.V07B.HDF5
+
+https://gpm1.gesdisc.eosdis.nasa.gov/data/GPM_L3/GPM_3IMERGHH.07/2023/132/3B-HHR.MS.MRG.3IMERG.20230512-S003000-E005959.0030.V07B.HDF5
+```
+3. Create the collection file *"test_collection.lst"* under */data* with the following content:
+```
+/data/3B-HHR.MS.MRG.3IMERG*.HDF5
+```
+
+4. Running the following to produce the report in Markdown:
+
+```
+pytest  --dataset-name-list="/data/test_collection.lst" -v --tb=line --md=reports/report.md
+```
