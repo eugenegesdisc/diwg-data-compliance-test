@@ -195,20 +195,104 @@ https://gpm1.gesdisc.eosdis.nasa.gov/data/GPM_L3/GPM_3IMERGHH.07/2023/132/3B-HHR
 
   - Running tests with "units" in signature but not "physical":
 ```
-pytest --dataset-name-list="/data/test_collection.lst" -v --tb=line
+pytest -k "units and not physical" --dataset-name-list="/data/test_collection.lst" -v --tb=line
 ```
-  - unning tests with "units" in signature but not "consisstency":
+  - Running tests with "units" in signature but not "consistency":
 ```
-pytest --dataset-name-list="/data/test_collection.lst" -v --tb=line
+pytest -k "units and not consistency" --dataset-name-list="/data/test_collection.lst" -v --tb=line
 ```
 
 
 ### Running tests on metadata only
+Implementations of compliance tests primarily relies on GDAL library to examine dataset. There are three levels of computing intensities: verifying filenames, verifying metadata (mainly using gdalinfo library calls), and verifying data values (read all bands). The requirements of computing resources and time increases. At times, we may want to skip computing intensive routines and focuses on only those checks with less computing requirements on time and resources. This example demonstrates how to run all the tests on metadata but on actual data values.
 
-### Running a specific tests by name
+Example testing on metadata only:
+1. Data source: Download the data from the following links to *"/data"* directory. It needs your earthdata authentication.
+```
+https://gpm1.gesdisc.eosdis.nasa.gov/data/GPM_L3/GPM_3IMERGHH.07/2023/132/3B-HHR.MS.MRG.3IMERG.20230512-S000000-E002959.0000.V07B.HDF5
+
+https://gpm1.gesdisc.eosdis.nasa.gov/data/GPM_L3/GPM_3IMERGHH.07/2023/132/3B-HHR.MS.MRG.3IMERG.20230512-S003000-E005959.0030.V07B.HDF5
+```
+3. Create the collection file *"test_collection.lst"* under */data* with the following content:
+```
+/data/3B-HHR.MS.MRG.3IMERG*.HDF5
+```
+
+4. Running all the tests except those requires loading data values:
+
+```
+pytest -k "not _array_" --dataset-name-list="/data/test_collection.lst" -v --tb=line
+```
+
+### Running a specific test
+This example demonstrates how to run a specific test by specifying the name or searching the specific signature as listed at the begining of this document.
+
+Example to run the compliance test on Recommendation 3.1 of ESDS-RFC-36v1.2 ([Character Set for User-Defined Group, Variable, and Attribute Names](https://wiki.earthdata.nasa.gov/display/ESDSWG/Character+Set+for+User-Defined+Group%2C+Variable%2C+and+Attribute+Names)):
+
+1. Data source: Download the data from the following links to *"/data"* directory. It needs your earthdata authentication.
+```
+https://gpm1.gesdisc.eosdis.nasa.gov/data/GPM_L3/GPM_3IMERGHH.07/2023/132/3B-HHR.MS.MRG.3IMERG.20230512-S000000-E002959.0000.V07B.HDF5
+
+https://gpm1.gesdisc.eosdis.nasa.gov/data/GPM_L3/GPM_3IMERGHH.07/2023/132/3B-HHR.MS.MRG.3IMERG.20230512-S003000-E005959.0030.V07B.HDF5
+```
+3. Create the collection file *"test_collection.lst"* under */data* with the following content:
+```
+/data/3B-HHR.MS.MRG.3IMERG*.HDF5
+```
+
+
+4. Running one of the following steps:
+
+  - Running the test on a specific recommendation by searching with unique signature:
+```
+pytest -k "group_variable_attribute_name_conventions" --dataset-name-list="/data/test_collection.lst" -v --tb=line
+```
+  - Running the test on a specific recommendation by specifying test file names:
+```
+pytest tests/test_*_group_variable_attribute_name_conventions.py --dataset-name-list="/data/test_collection.lst" -v --tb=line
+```
+
 
 ### Export a test to json
+The results can be exported as a JSON file.
+
+Example to produce report in JSON:
+1. Data source: Download the data from the following links to *"/data"* directory. It needs your earthdata authentication.
+```
+https://gpm1.gesdisc.eosdis.nasa.gov/data/GPM_L3/GPM_3IMERGHH.07/2023/132/3B-HHR.MS.MRG.3IMERG.20230512-S000000-E002959.0000.V07B.HDF5
+
+https://gpm1.gesdisc.eosdis.nasa.gov/data/GPM_L3/GPM_3IMERGHH.07/2023/132/3B-HHR.MS.MRG.3IMERG.20230512-S003000-E005959.0030.V07B.HDF5
+```
+3. Create the collection file *"test_collection.lst"* under */data* with the following content:
+```
+/data/3B-HHR.MS.MRG.3IMERG*.HDF5
+```
+
+4. Running the following to produce the report in JSON:
+
+```
+pytest  --dataset-name-list="/data/test_collection.lst" -v --tb=line --json-report --json-report-file=reports/report.json
+```
 
 ### Export a test to HTML
+The results can be exported as a HTML page.
+
+Example to produce report in HTML:
+1. Data source: Download the data from the following links to *"/data"* directory. It needs your earthdata authentication.
+```
+https://gpm1.gesdisc.eosdis.nasa.gov/data/GPM_L3/GPM_3IMERGHH.07/2023/132/3B-HHR.MS.MRG.3IMERG.20230512-S000000-E002959.0000.V07B.HDF5
+
+https://gpm1.gesdisc.eosdis.nasa.gov/data/GPM_L3/GPM_3IMERGHH.07/2023/132/3B-HHR.MS.MRG.3IMERG.20230512-S003000-E005959.0030.V07B.HDF5
+```
+3. Create the collection file *"test_collection.lst"* under */data* with the following content:
+```
+/data/3B-HHR.MS.MRG.3IMERG*.HDF5
+```
+
+4. Running the following to produce the report in JSON:
+
+```
+pytest  --dataset-name-list="/data/test_collection.lst" -v --tb=line --json-report --json-report-file=reports/report.json
+```
 
 ### Export a test to markdown
