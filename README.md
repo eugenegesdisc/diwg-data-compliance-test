@@ -316,3 +316,12 @@ https://gpm1.gesdisc.eosdis.nasa.gov/data/GPM_L3/GPM_3IMERGHH.07/2023/132/3B-HHR
 ```
 pytest  --dataset-name-list="/data/test_collection.lst" -v --tb=line --md=reports/report.md
 ```
+
+### Export a test report to PDF
+
+The results can be printed out to a PDF. The PDF version of the report can be produced using the HTML report. The following shows how to produce the PDF report from HTML rendering.
+
+
+```
+weasyprint -s <(echo 'td {word-break:break-all; break-inside: auto} @page {size: letter; margin: 0in 0.44in 0.2in 0.44in;}') /reports/report.html /reports/report.pdf
+```
