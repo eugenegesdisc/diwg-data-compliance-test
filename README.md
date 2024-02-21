@@ -163,7 +163,7 @@ HDF5:"/data/MI-Aura_L2-OMNO2_2004m1002t0046-o01147_v003-2019m0814t172908.he5"://
 ```
 
 
-3. Running one of the following steps:
+5. Running one of the following steps:
 
   - Running all applicable tests against a *subdataset* collection:
 ```
@@ -180,6 +180,27 @@ pytest --dataset-is-swath --dataset-name-list="/data/test_collection.lst" -v --t
 Pytest allows search against the signature of tests using keyword. The signature of tests is formed by test filename + test class name + test method. Any part of the signature can be filtered with, without, or combined.
 
 Example selection of tests:
+1. Data source: Download the data from the following links to *"/data"* directory. It needs your earthdata authentication.
+```
+https://gpm1.gesdisc.eosdis.nasa.gov/data/GPM_L3/GPM_3IMERGHH.07/2023/132/3B-HHR.MS.MRG.3IMERG.20230512-S000000-E002959.0000.V07B.HDF5
+
+https://gpm1.gesdisc.eosdis.nasa.gov/data/GPM_L3/GPM_3IMERGHH.07/2023/132/3B-HHR.MS.MRG.3IMERG.20230512-S003000-E005959.0030.V07B.HDF5
+```
+3. Create the collection file *"test_collection.lst"* under */data* with the following content:
+```
+/data/3B-HHR.MS.MRG.3IMERG*.HDF5
+```
+
+4. Running one of the following steps:
+
+  - Running tests with "units" in signature but not "physical":
+```
+pytest --dataset-name-list="/data/test_collection.lst" -v --tb=line
+```
+  - unning tests with "units" in signature but not "consisstency":
+```
+pytest --dataset-name-list="/data/test_collection.lst" -v --tb=line
+```
 
 
 ### Running tests on metadata only
