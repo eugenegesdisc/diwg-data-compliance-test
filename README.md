@@ -299,7 +299,7 @@ pytest  --dataset-name-list="/data/test_collection.lst" -v --tb=line --html=repo
 
 The results can be exported as a Markdown file.
 
-Example to produce report in HTML:
+Example to produce report in Markdown:
 1. Data source: Download the data from the following links to *"/data"* directory. It needs your earthdata authentication.
 ```
 https://gpm1.gesdisc.eosdis.nasa.gov/data/GPM_L3/GPM_3IMERGHH.07/2023/132/3B-HHR.MS.MRG.3IMERG.20230512-S000000-E002959.0000.V07B.HDF5
