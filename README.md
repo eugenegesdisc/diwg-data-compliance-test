@@ -17,6 +17,10 @@ Data compliance test against the recommendations of ESDSWG DIWG
 | 3.5 | [Keep Coordinate Values in Coordinate Variables](https://wiki.earthdata.nasa.gov/display/ESDSWG/Keep+Coordinate+Values+in+Coordinate+Variables)  |keep_coordinate_values_in_coordinate_variables|
 | 3.6 | [Include Georeference Information with Geospatial Coordinates](https://wiki.earthdata.nasa.gov/display/ESDSWG/Include+Georeference+Information+with+Geospatial+Coordinates)  |include_georeference_information|
 | 3.7 | [Not-a-Number (NaN) Value](https://wiki.earthdata.nasa.gov/display/ESDSWG/Not-a-Number+%28NaN%29+Value)  |not_a_number_value|
+| 3.8 | [Standardize File Extensions for HDF5/netCDF Files](https://wiki.earthdata.nasa.gov/pages/viewpage.action?pageId=182297715)  |standardize_file_extensions|
+| 3.9 | [Ensure Granule's Filename Uniqueness Across Different Dataset Releases](https://wiki.earthdata.nasa.gov/display/ESDSWG/Ensure+Granule%27s+Filename+Uniqueness+Across+Different+Dataset+Releases)  |ensure_granule_filename_uniqueness_across_different_dataset_releases|
+| 3.10 | [Adopt Semantically Rich Dataset Release Identifiers](https://wiki.earthdata.nasa.gov/display/ESDSWG/Adopt+Semantically+Rich+Dataset+Release+Identifiers)  |adopt_semantically_rich_dataset_release_identifiers|
+| 3.11 | [Date-Time Information in Granule Filenames](https://wiki.earthdata.nasa.gov/display/ESDSWG/Date-Time+Information+in+Granule+Filenames)  |date_time_information_in_granule_filenames|
 
 ## Setup running environment
 ### Run from source
@@ -159,7 +163,7 @@ https://aura.gesdisc.eosdis.nasa.gov/data/Aura_OMI_Level2/OMNO2.003/2004/276/OMI
 4. Create the collection file *"test_subdataset_collection.lst"* under */data* with the following content:
 ```
 HDF5:"/data/OMI-Aura_L2-OMNO2_2004m1001t0003-o01132_v003-2019m0814t172940.he5"://HDFEOS/SWATHS/ColumnAmountNO2/Data_Fields/ScenePressure
-HDF5:"/data/MI-Aura_L2-OMNO2_2004m1002t0046-o01147_v003-2019m0814t172908.he5"://HDFEOS/SWATHS/ColumnAmountNO2/Data_Fields/ScenePressure
+HDF5:"/data/OMI-Aura_L2-OMNO2_2004m1002t0046-o01147_v003-2019m0814t172908.he5"://HDFEOS/SWATHS/ColumnAmountNO2/Data_Fields/ScenePressure
 ```
 
 
@@ -167,7 +171,7 @@ HDF5:"/data/MI-Aura_L2-OMNO2_2004m1002t0046-o01147_v003-2019m0814t172908.he5"://
 
   - Running all applicable tests against a *subdataset* collection:
 ```
-pytest --dataset-is-swath --dataset-name-list="/data/test_subdatasets_collection.lst" -v --tb=line
+pytest --dataset-is-swath --dataset-name-list="/data/test_subdataset_collection.lst" -v --tb=line
 ```
   - Running all applicable tests against a dataset collection:
 ```
