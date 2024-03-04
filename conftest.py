@@ -24,7 +24,65 @@ def pytest_addoption(parser):
     parser.addoption("--dataset-is-grid",
                      dest="dataset_is_grid",
                      action="store_true",
-                     help="dataset or all dataset in the collection are regular grid. ")
+                     help="dataset or all dataset in the collection are regular grid. ")    
+
+    parser.addoption("--dataset-id",
+                     dest="dataset_id",
+                     action="store", default=None,
+                     help="Regex to extract unique dataset identifier from granule filename.")
+    parser.addoption("--dataset-crid",
+                     dest="dataset_crid",
+                     action="store", default=None,
+                     help="Regex to extract Compound Release ID (CRID) from filename. ")
+    parser.addoption("--dataset-datetime",
+                     dest="dataset_datetime",
+                     action="store", default=None,
+                     help="Regex to extract temporal extent information from filename. ")
+    parser.addoption("--dataset-pdt",
+                     dest="dataset_pdt",
+                     action="store", default=None,
+                     help="Regex to extract Production Date Time (PDT) from filename. ")
+    parser.addoption("--dataset-crid-major",
+                     dest="dataset_crid_major",
+                     action="store", default=None,
+                     help="Regex to extrac major version from Compound Release ID (CRID) token. ")
+    parser.addoption("--dataset-crid-major-group",
+                     dest="dataset_crid_major_group",
+                     action="store", default="major",
+                     help="Group name in major regex for extracting major version. ")
+    parser.addoption("--dataset-crid-minor",
+                     dest="dataset_crid_minor",
+                     action="store", default=None,
+                     help="Regex to extract minor versionn from Compound Release ID (CRID) token. ")
+    parser.addoption("--dataset-crid-minor-group",
+                     dest="dataset_crid_minor_group",
+                     action="store", default="minor",
+                     help="Group name in minor regex for extracting minor version. ")
+    parser.addoption("--dataset-crid-patch",
+                     dest="dataset_crid_patch",
+                     action="store", default=None,
+                     help="Regex to extract patch number from Compound Release ID (CRID) token. ")
+    parser.addoption("--dataset-crid-patch-group",
+                     dest="dataset_crid_patch_group",
+                     action="store", default="patch",
+                     help="Group name in patch regex for extracting patch number. ")
+
+    parser.addoption("--dataset-datetime-group",
+                     dest="dataset_datetime_group",
+                     action="store", default=None,
+                     help="Group name in datetime regex for extracting datetime. ")
+    parser.addoption("--dataset-pdt-group",
+                     dest="dataset_pdt_group",
+                     action="store", default=None,
+                     help="Group name in pdt regex for extracting pdt. ")
+    parser.addoption("--dataset-datetime-fields",
+                     dest="dataset_datetime_fields",
+                     action="store", default=None,
+                     help="Regex to extract other date/time fields from filename. ")
+    parser.addoption("--dataset-datetime-fields-groups",
+                     dest="dataset_datetime_fields_groups",
+                     action="store", default=None,
+                     help="Group names in date/time fields regex for extracting date/time fields. ")
 
 def pytest_configure(config):
     """

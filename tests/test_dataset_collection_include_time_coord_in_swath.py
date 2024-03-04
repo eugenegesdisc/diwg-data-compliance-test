@@ -118,7 +118,6 @@ class TestClassDatasetCollectionVariableUnits:
             _the_reason = json.dumps(_the_o)
             pytest.xfail(_the_reason)
         _test_results = list()
-        _the_ref_ds = dataset_collection["datasets"][0]
         for dataset in dataset_collection["datasets"]:
             _the_result = self._process_one_dataset(dataset)
             if _the_result:
@@ -143,8 +142,7 @@ class TestClassDatasetCollectionVariableUnits:
             _the_dict = dict()
             _the_dict["error"]=dataset["error"]
             _the_dict["dataset_name"]=dataset["dataset_name"]
-            _the_reason = json.dumps(_the_dict)
-            pytest.xfail(_the_reason)
+            return _the_dict
         test_results = list()
         if len(dataset['time_variables']) < 1:
                 _the_o = dict()

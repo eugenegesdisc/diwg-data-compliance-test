@@ -109,7 +109,6 @@ class TestClassDatasetCollectionVariableUnits:
             _the_reason = json.dumps(_the_o)
             pytest.xfail(_the_reason)
         _test_results = list()
-        _the_ref_ds = dataset_collection["datasets"][0]
         for dataset in dataset_collection["datasets"]:
             _the_result = self._process_one_dataset(dataset)
             if _the_result:
